@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Web Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Welcome to my Web Site</h1>
+
+    <h2 class="style1">Web Development </h2>
+
+    <div class="content">
+
+        <div class="info">
+            <p><span class="style2">Full name:</span> <span class="style3">Mohammed chelalga</span></p>
+            <p><span class="style2">Age:</span> 20 years old</p>
+            <p><span class="style2">Class:</span> 2<sup>nd</sup> LMD computer Science</p>
+            <p><span class="style2">University:<a href="https://www.univ-eloued.dz/en/"> University of EL OUED</a>
+        </div>
+
+        <div class="image">
+            <img src="photo_5769193680982969366_x.jpg" alt="luffy">
+        </div>
+
+    </div>
+
+</body>
+</html>
