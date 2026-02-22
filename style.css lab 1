@@ -1,14 +1,15 @@
 /* Page background */
 body {
-    background-color: #e6e6e6;
-    font-family: Times New Roman;
-    margin: 40px;
+    background-color: ghostwhite;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 50px;
 }
 
 /* Main title */
 h1 {
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
+    
 }
 
 /* Style1 */
@@ -21,7 +22,7 @@ h1 {
 /* Style2 */
 .style2 {
     color: green;
-    font-weight: bold;
+    font-weight: lighter;
 }
 
 /* Style3 */
@@ -38,6 +39,6 @@ h1 {
 
 /* Image style (Style4) */
 .image img {
-    width: 350px;
-    border: 3px solid black;
+    width: 360px;
+    border: 3px solid burlywood;
 }
