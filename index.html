@@ -13,18 +13,23 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="script.js" defer></script>
+
+    
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="card mt-5">
 
-        <h1 class="mt-5">GPA Calculator</h1>
-
+        <h1 class="card-header">GPA Calculator</h1>
+        <div class="card-body">
         <div id="result" class="mt-3"></div>
 
         <form id="gpaForm" class="mt-3">
@@ -56,20 +61,27 @@
 
             </div>
 
-            <button type="button" id="addCourse" class="btn btn-secondary mb-3">
+            <button type="button" id="addCourse" class="btn btn-secondary mb-3" data-toggle="tooltip" data-placement="right" title="Click to add a new course">
                 + Add Course
             </button>
 
             <br>
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Click to calculate your GPA">
                 Calculate GPA
             </button>
 
         </form>
+        </div>
 
     </div>
 
 </body>
+
+<script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    });
+    </script> 
 
 </html>

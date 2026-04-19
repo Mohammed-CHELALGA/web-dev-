@@ -1,7 +1,7 @@
 <?php
 
 header('Content-Type: application/json');
-
+// $valid_courses = array('Operating Systems' , 'Data Bases' , 'Computer Netowrks' , 'Object Oriented Programming' , 'Language Theory' , 'Web Development');
 if (isset($_POST['course'], $_POST['credits'], $_POST['grade'])) {
 
     $courses = $_POST['course'];
@@ -51,12 +51,16 @@ if (isset($_POST['course'], $_POST['credits'], $_POST['grade'])) {
 
         if ($gpa >= 3.7) {
             $interpretation = "Distinction";
+            $prog = 100;
         } elseif ($gpa >= 3.0) {
             $interpretation = "Merit";
+            $prog = 75;
         } elseif ($gpa >= 2.0) {
             $interpretation = "Pass";
+            $prog = 50;
         } else {
             $interpretation = "Fail";
+            $prog = 25;
         }
 
         $message = "Your GPA is " . number_format($gpa, 2) . " ($interpretation).";
@@ -64,6 +68,8 @@ if (isset($_POST['course'], $_POST['credits'], $_POST['grade'])) {
         echo json_encode([
             'success'   => true,
             'gpa'       => $gpa,
+            'interpretation' => $interpretation,
+            'prog' => $prog,
             'message'   => $message,
             'tableHtml' => $tableHtml,
         ]);
