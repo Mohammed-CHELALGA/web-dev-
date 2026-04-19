@@ -1,22 +1,26 @@
 <?php
+
+header('Content-Type: application/json');
+
 if (isset($_POST['course'], $_POST['credits'], $_POST['grade'])) {
 
     $courses = $_POST['course'];
     $credits = $_POST['credits'];
-    $grades = $_POST['grade'];
+    $grades  = $_POST['grade'];
 
     $totalPoints = 0;
     $totalCredits = 0;
-    echo '<head> 
-        <link rel="stylesheet" href="style.css">
-        </head>';
-    echo "<table>";
-    echo "<tr>
-            <th> Course </th>
-            <th> Credits </th>
-            <th> Grade </th>
-            <th> Grade Points </th>
-          </tr>";
+
+    $tableHtml = '<table class="table table-bordered mt-3">';
+    $tableHtml .= '<thead class="thead-dark">
+                    <tr>
+                        <th>Course</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                        <th>Grade Points</th>
+                    </tr>
+                   </thead>
+                   <tbody>';
 
     for ($i = 0; $i < count($courses); $i++) {
 
@@ -31,15 +35,15 @@ if (isset($_POST['course'], $_POST['credits'], $_POST['grade'])) {
         $totalPoints += $pts;
         $totalCredits += $cr;
 
-        echo "<tr>
-                <td> $course </td>
-                <td> $cr </td>
-                <td> $g </td>
-                <td> $pts </td>
-              </tr>";
+        $tableHtml .= "<tr>
+                        <td>$course</td>
+                        <td>$cr</td>
+                        <td>$g</td>
+                        <td>$pts</td>
+                       </tr>";
     }
 
-    echo "</table>";
+    $tableHtml .= '</tbody></table>';
 
     if ($totalCredits > 0) {
 
@@ -55,14 +59,33 @@ if (isset($_POST['course'], $_POST['credits'], $_POST['grade'])) {
             $interpretation = "Fail";
         }
 
-        echo "<p> Your GPA is <strong> " . number_format($gpa, 2) .
-             " </strong> ( $interpretation ) . </p>";
+        $message = "Your GPA is " . number_format($gpa, 2) . " ($interpretation).";
+
+        echo json_encode([
+            'success'   => true,
+            'gpa'       => $gpa,
+            'message'   => $message,
+            'tableHtml' => $tableHtml,
+        ]);
 
     } else {
-        echo "<p> No valid courses entered . </p>";
+
+        echo json_encode([
+            'success' => false,
+            'message' => 'No valid courses entered.',
+        ]);
+
     }
 
 } else {
-    echo "Data not received.";
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Data not received.',
+    ]);
+
 }
+
+exit;
+
 ?>
