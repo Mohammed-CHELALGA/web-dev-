@@ -1,0 +1,4 @@
+USE mohamedchelalga;
+
+
+DELETE FROM customer WHERE id = 2;
